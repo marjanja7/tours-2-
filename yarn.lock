@@ -635,7 +635,7 @@
     semver "^7.5.2"
     srcset "4"
 
-"@parcel/transformer-image@2.9.3":
+"@parcel/transformer-image@2.9.3", "@parcel/transformer-image@^2.9.3":
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/@parcel/transformer-image/-/transformer-image-2.9.3.tgz#dd380b949e923662d3c7ced48dbe9d5b919a94e7"
   integrity sha512-7CEe35RaPadQzLIuxzTtIxnItvOoy46hcbXtOdDt6lmVa4omuOygZYRIya2lsGIP4JHvAaALMb5nt99a1uTwJg==

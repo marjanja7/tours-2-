@@ -15,7 +15,7 @@ let tours = [
         startTime: "2023-01-04T00:00:00.000Z",
         endTime: "2023-01-12T00:00:00.000Z",
         price: "57000 ₽",
-        image: "./trip-1.jpg",
+        image: require("/src/images/tour-1.jpg"),
         rating: 7.8,
     },
     {
@@ -27,7 +27,7 @@ let tours = [
         startTime: "2023-02-04T00:00:00.000Z",
         endTime: "2023-01-12T00:00:00.000Z",
         price: "75000 ₽",
-        image: "./trip-2.jpg",
+        image: require("/src/images/tour-2.jpg"),
         rating: 8.8,
     },
     {
@@ -39,7 +39,7 @@ let tours = [
         startTime: "2023-02-04T00:00:00.000Z",
         endTime: "2023-01-12T00:00:00.000Z",
         price: "89000 ₽",
-        image: "./trip-3.jpg",
+        image: require("/src/images/tour-3.jpg"),
         rating: 8.4,
     },
 ]
@@ -63,6 +63,7 @@ function renderTours() {
         )
         cards.innerHTML += `
             <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img class="h-56 w-full" src="${tour.image}" alt="" />   
                 <div class="p-5">
                     <div>
                         <a href="#">
@@ -101,7 +102,7 @@ function renderTours() {
                     }</p>
                     <button class="btn-primary w-full">Подробнее</button>
                 </div>
-                <img class="h-56 w-full" src="${tour.image}" alt="" />
+                
             </div>
             </div>
         `
@@ -110,3 +111,4 @@ function renderTours() {
 renderTours()
 loadTours()
 renderTours()
+console(tours)
