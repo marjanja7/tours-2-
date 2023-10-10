@@ -4,7 +4,6 @@ import { format, differenceInDays } from "date-fns"
 import { ru } from "date-fns/locale"
 
 
-let tours  
 const cards = document.getElementById("cards")
 
 async function loadTours() {
@@ -13,11 +12,10 @@ async function loadTours() {
     )
     const data = await response.json()
     
-    tours=data
     return data
 }
 
-function renderTours() {
+function renderTours(tours) {
     cards.innerHTML = ""
     tours.forEach((tour) => {
         const duration = differenceInDays(
@@ -55,8 +53,7 @@ function renderTours() {
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                         <span class="ml-1">Длительность:</span>
-                        <span class="text-fblack font-medium" >${
-                            tour.duration
+                        <span class="text-fblack font-medium" >${duration
                         }</span>
                     </div>
 
@@ -73,7 +70,7 @@ function renderTours() {
 }
 
 async function init() {
-    await loadTours()
-    renderTours()
+    const tours = await loadTours()
+    renderTours(tours)
 }
 init()
