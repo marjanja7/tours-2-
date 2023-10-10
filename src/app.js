@@ -3,46 +3,8 @@ const { container } = require("postcss")
 import { format, differenceInDays } from "date-fns"
 import { ru } from "date-fns/locale"
 
-let counter = 0
-let currentTourId
-let tours = [
-    {
-        id: counter++,
-        country: "Россия",
-        hotelName: "Сочи Парк Отель",
-        city: "Адлер",
-        
-        startTime: "2023-01-04T00:00:00.000Z",
-        endTime: "2023-01-12T00:00:00.000Z",
-        price: "57000 ₽",
-        image: require("/src/images/tour-1.jpg"),
-        rating: 7.8,
-    },
-    {
-        id: counter++,
-        country: "Россия",
-        hotelName: "MONE",
-        city: "Сочи",
-        
-        startTime: "2023-02-04T00:00:00.000Z",
-        endTime: "2023-01-12T00:00:00.000Z",
-        price: "75000 ₽",
-        image: require("/src/images/tour-2.jpg"),
-        rating: 8.8,
-    },
-    {
-        id: counter++,
-        country: "Россия",
-        hotelName: "Bridge Resort",
-        city: "Адлер",
-        
-        startTime: "2023-02-04T00:00:00.000Z",
-        endTime: "2023-01-12T00:00:00.000Z",
-        price: "89000 ₽",
-        image: require("/src/images/tour-3.jpg"),
-        rating: 8.4,
-    },
-]
+
+let tours  
 const cards = document.getElementById("cards")
 
 async function loadTours() {
@@ -50,7 +12,8 @@ async function loadTours() {
         "https://www.bit-by-bit.ru/api/student-projects/tours"
     )
     const data = await response.json()
-
+    
+    tours=data
     return data
 }
 
@@ -108,7 +71,9 @@ function renderTours() {
         `
     })
 }
-renderTours()
-loadTours()
-renderTours()
-console(tours)
+
+async function init() {
+    await loadTours()
+    renderTours()
+}
+init()
