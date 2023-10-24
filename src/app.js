@@ -98,14 +98,14 @@ function openContainerRegister (id) {
     })
 
     document.getElementById("tour-info").innerHTML = `
-            <div class="flex justify-between">
-                <img class="h-32 w-32 " src="${currentTour.image}" alt="" />
-                <div class="block "
+            <div class="flex justify-between ">
+                <img class="w-32 " src="${currentTour.image}" alt="" />
+                <div class="p-2 block ">
                     <div class="flex justify-start">
-                        <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country}
+                        <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country}</p>
                         <p class='font-semibold mt-3 text-Sm text-rose-400'>${currentTour.city !== null ? currentTour.city : ""}</p>
                     </div>
-                            <p class="text-grey-400 mt-3">${currentTour.hotelName}</p>
+                        <p class="text-grey-400 mt-3">${currentTour.hotelName}</p>
                 
                         <p class="text-teal-500 font-medium text-sm pt-2">
                             <a href="#">${format(new Date(currentTour.startTime),"dd MMMM yyyy", { locale: ru }
