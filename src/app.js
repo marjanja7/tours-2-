@@ -99,7 +99,7 @@ function openContainerRegister (id) {
 
     document.getElementById("tour-info").innerHTML = `
             <div class="flex justify-between ">
-                <img class="w-32 " src="${currentTour.image}" alt="" />
+                <img class="w-full" src="${currentTour.image}" alt="" />
                 <div class="p-2 block ">
                     <div class="flex justify-start">
                         <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country}</p>
