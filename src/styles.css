@@ -8,7 +8,7 @@
 .container-register{
     background-color: rgba(105, 104, 104, 0.456);
     border-radius: 12px;
-    display: flex;
+    display: none;
     max-width: 700px;
     position: fixed;
     top: 100;

@@ -98,25 +98,23 @@ function openContainerRegister (id) {
     })
 
     document.getElementById("tour-info").innerHTML = `
-                <div class="flex justify-between"
-                    <img class="h-30 w-full" src="${currentTour.image}" alt="" />
-                    <div class="block color-"
+            <div class="flex justify-between">
+                <img class="h-32 w-32 " src="${currentTour.image}" alt="" />
+                <div class="block "
+                    <div class="flex justify-start">
                         <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country}
-                        <div>
-                            <p class='font-semibold mt-3 text-Sm text-rose-400'>${currentTour.city !== null ? currentTour.city : ""}</p>
-                      
+                        <p class='font-semibold mt-3 text-Sm text-rose-400'>${currentTour.city !== null ? currentTour.city : ""}</p>
+                    </div>
                             <p class="text-grey-400 mt-3">${currentTour.hotelName}</p>
-                        </div>
+                
                         <p class="text-teal-500 font-medium text-sm pt-2">
                             <a href="#">${format(new Date(currentTour.startTime),"dd MMMM yyyy", { locale: ru }
                                 )}-${format(new Date(currentTour.endTime),"dd MMMM yyyy",{ locale: ru }
                            )}</a>
                         </p>
                         <p class="py-2 text-2xl text-rose-600 font-bold">${currentTour.price}</p>
-
-
-                    </div> 
-                </div>
+                </div> 
+            </div>
     `
 
 }
