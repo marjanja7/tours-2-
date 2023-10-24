@@ -10,9 +10,9 @@
     <body>
         <div class="bg-teal-50">
             <div class="max-w-6xl mx-auto py-16 px-12 sm-px8">
-                <div class="flex justify-end gap-4">
+                <!-- <div class="flex justify-end gap-4">
                     <button class="btn-primary">Избранное</button>
-                </div>
+                </div> -->
                 <div class="text-center">
                     <h1 class="text-5xl font-bold text-rose-600 ">
                         Туристическое агенство "ПОРА ОТДЫХАТЬ"
@@ -21,7 +21,47 @@
                         Куда можно поехать отдохнуть прямо сейчас
                     </p>
                 </div>
-                <div id="cards" class="mt-12 gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                <div id="container-register" class=" container-register">
+                    <div class="flex justify-center bg-white p-12 gap-4 border ">
+                        <div class="flex flex-col w-full justify-center">
+                            <h3 class="text-base font-bolt text-rose-600 sm:text-2xl">Выбранный тур</h3>
+                        <div id="tour-info" class="bg-white h-30 shadow-lg rounded-lg overflow-hidden"></div>
+                        
+                        <div class="user-contacts" id="user-contacts">
+                            <div class="contacts-title">Контактные данные гостя</div>
+                            <div class="contacts-subtitle">Пожалуйста, заполните все поля!</div>
+                            <form class="contacts-form">
+                                <div class="input"> 
+                                    <p class="p-input">Фамилия Имя</p>
+                                    <input id="name" >
+                                </div>
+                                <div class="input">
+                                    <p class="p-input">Телефон</p>
+                                    <input id="phone" >
+                                </div>
+                                <div class="input">
+                                    <p class="p-input">Email</p>
+                                    <input id="email" >
+                                </div>
+                                <div class="input">
+                                    <p class="p-input">Комментарий</p>
+                                    <input id="comment">
+                                </div>
+                                <div id="form" class="w-full">
+                                    <div class="buttons-form flex">
+                                        <button class="btn-primary w-full" id="send-btn">Отправить</button>
+                                        <button class="btn-primary w-full" id="close-register-btn">Закрыть</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            </div>
+            <div id="cards" class="mt-12 gap-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 </div>
             </div>
         </div>
