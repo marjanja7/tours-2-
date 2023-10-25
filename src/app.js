@@ -149,7 +149,7 @@ async function sendTour () {
             console.log ("Повторите еще раз! Произошла ошибка")
         }
     } else {
-        document.getElementById('error-messange').style.display = 'flex'
+        document.getElementById('error-message').style.display = 'flex'
     }
 }
 
