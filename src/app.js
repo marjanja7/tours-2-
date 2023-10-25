@@ -143,6 +143,7 @@ async function sendTour () {
             })
             let jsonData = await response.json()
             console.log ("Ваше обращение зарегистрировано")
+            closeContainerRegister()
             alert("Ваше обращение зарегистрировано")
         } catch {
             console.log ("Повторите еще раз! Произошла ошибка")
