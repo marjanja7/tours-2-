@@ -15,11 +15,27 @@ async function loadTours() {
     
     return data
 }
+function filterByCountry(tours, country) {
+    const filteredTours = tours.filter((tour) => {
+        return tour.country === country
+    })
+    renderTours (filteredTours)
+}
 
 async function init() {
     tours = await loadTours()
     renderTours(tours)
+
+    document.getElementById('thailand').addEventListener('click', () => filterByCountry (tours,'Тайланд'))
+    document.getElementById('maldives').addEventListener('click', () => filterByCountry (tours,'Мальдивы'))
+    document.getElementById('indonesia').addEventListener('click', () => filterByCountry (tours,'Индонезия'))
+    document.getElementById('mexico').addEventListener('click', () => filterByCountry (tours,'Мексика'))
+    document.getElementById('tanzania').addEventListener('click', () => filterByCountry (tours,'Танзания'))
+    document.getElementById('cyprus').addEventListener('click', () => filterByCountry (tours,'Кипр'))
+    document.getElementById('egypt').addEventListener('click', () => filterByCountry (tours,'Египет'))
+    
 }
+
 init()
 
 
