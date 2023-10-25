@@ -82,10 +82,6 @@ const openContainerBtn = document.getElementById (`register-btn-${tours.id}`)
 
 const sendBtn = document.getElementById('send-btn')
 
-
-//reservationBtn.addEventListener('click', openContainerRegister )
-//closeRegisterBtn.addEventListener('click', closeContainerRegister)  
-
 sendBtn.addEventListener("click", (event) => sendTour(event))
 
 let currentId
@@ -125,11 +121,10 @@ closeRegisterBtn.addEventListener('click', closeContainerRegister)
 
 function closeContainerRegister () {
     containerRegister.style.display = 'none'
-  }
+}
 
-  async function sendTour () {
-    
-    const userData = {
+async function sendTour () {
+    const params = {
         customerName: document.getElementById("name").value,
         phone: document.getElementById("phone").value,
         email: document.getElementById("email").value,
@@ -139,7 +134,7 @@ function closeContainerRegister () {
 
     const tourId = currentId
 
-    if (userData.customerName && userData.phone && userData.email) {
+    if (params.customerName && params.phone && params.email) {
         const url = `https://www.bit-by-bit.ru/api/student-projects/tours/${tourId}`
         try {
             let response = await fetch(url, {
@@ -148,6 +143,7 @@ function closeContainerRegister () {
             })
             let jsonData = await response.json()
             console.log ("Ваше обращение зарегистрировано")
+            alert("Ваше обращение зарегистрировано")
         } catch {
             console.log ("Повторите еще раз! Произошла ошибка")
         }
@@ -167,9 +163,9 @@ init ()
     // }
   
  
-function clearContainer () {
-    document.getElementById('name').value = ""
-    document.getElementById('phone').value = ""
-    document.getElementById('email').value = ""
-    document.getElementById('comment').value = ""
-}
+// function clearContainer () {
+//     document.getElementById('name').value = ""
+//     document.getElementById('phone').value = ""
+//     document.getElementById('email').value = ""
+//     document.getElementById('comment').value = ""
+// }
