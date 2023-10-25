@@ -54,7 +54,7 @@ function renderTours(tours) {
                         <span class="text-fblack font-medium" >${duration}</span>
                     </div>
 
-                    <p class="py-2 text-2xl text-rose-600 font-bold">${tour.price}</p>
+                    <p class="py-2 text-2xl text-rose-600 font-bold">${tour.price} ₽ </p>
                     <div class="buttons flex">
                         <button class="btn-primary w-full ">Подробнее</button>
                         <button id="register-btn-${tour.id}" class="btn-primary w-full">Забронировать</button>
@@ -99,11 +99,12 @@ function openContainerRegister (id) {
 
     document.getElementById("tour-info").innerHTML = `
             <div class="flex justify-between ">
-                <img class="w-50" src="${currentTour.image}" alt="" />
+                <img style="width: 50%;  height: 50% flex items-center justify-center;" src="${currentTour.image}" alt="" />
                 <div class="p-2 block ">
                     <div class="flex justify-start">
-                        <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country}</p>
-                        <p class='font-semibold mt-3 text-Sm text-rose-400'>${currentTour.city !== null ? currentTour.city : ""}</p>
+                        <p class="font-semibold mt-3 text-lg text-rose-600">${currentTour.country} </p>
+                    
+                        <p class='font-semibold mt-3 text-lg text-rose-600 px-3'> ${currentTour.city !== null ? currentTour.city : ""}</p>
                     </div>
                         <p class="text-grey-400 mt-3">${currentTour.hotelName}</p>
                 
@@ -112,7 +113,7 @@ function openContainerRegister (id) {
                                 )}-${format(new Date(currentTour.endTime),"dd MMMM yyyy",{ locale: ru }
                            )}</a>
                         </p>
-                        <p class="py-2 text-2xl text-rose-600 font-bold">${currentTour.price}</p>
+                        <p class="py-2 text-2xl text-rose-600 font-bold">${currentTour.price} ₽ </p>
                 </div> 
             </div>
     `
@@ -126,38 +127,45 @@ function closeContainerRegister () {
     containerRegister.style.display = 'none'
   }
 
-  async function sendTour (t) {
-    const form = document.getElementById("form").value
-    const userName = document.getElementById("name").value
-    const userPhone = document.getElementById("phone").value
-    const userEmail = document.getElementById("email").value
-    const userComment = document.getElementById("comment").value
-
-    let userData = {
-        customerName: userName,
-        phone: userPhone,
-        email: userEmail,
-        comment: userComment
+  async function sendTour () {
+    
+    const userData = {
+        customerName: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        comment: document.getElementById("comment").value
 
     }
 
     const tourId = currentId
 
-    const url = `https://www.bit-by-bit.ru/api/student-projects/tours/${tourId}`
-
-    let response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(userData)
-    })
-    if (response.ok) {
-        alert("Ваше обращение зарегистрировано")
-        closeContainerRegister()
-        let result = await response.json()
-        return result
-    }else {
-        alert("Повторите еще раз! Произошла ошибка")
+    if (userData.customerName && userData.phone && userData.email) {
+        const url = `https://www.bit-by-bit.ru/api/student-projects/tours/${tourId}`
+        try {
+            let response = await fetch(url, {
+                method: "POST",
+                body: JSON.stringify(params)
+            })
+            let jsonData = await response.json()
+            console.log ("Ваше обращение зарегистрировано")
+        } catch {
+            console.log ("Повторите еще раз! Произошла ошибка")
+        }
+    } else {
+        document.getElementById('error-messange').style.display = 'flex'
     }
-  }
+}
+
+init ()
+    // if (response.ok) {
+    //     alert("Ваше обращение зарегистрировано")
+    //     closeContainerRegister()
+    //     let result = await response.json()
+    //     return result
+    // }else {
+    //     alert("Повторите еще раз! Произошла ошибка")
+    // }
+  
  
 function clearContainer () {
     document.getElementById('name').value = ""

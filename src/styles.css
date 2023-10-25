@@ -9,11 +9,13 @@
     background-color: rgba(105, 104, 104, 0.456);
     border-radius: 12px;
     display: none;
+    
     max-width: 700px;
     position: fixed;
-    top: 100;
-    bottom: 50;
+    top: 30;
+    
     padding: 40px;
+    
     justify-content: center;
 
     align-items: center;
@@ -46,7 +48,7 @@ input {
 .input {
     color: #1b847d;
     background:rgb(233, 253, 249);
-    width: 500px;
+    width: 100%;
     padding-right: 9px;
     height: 50px;
     border-radius: 5px;
