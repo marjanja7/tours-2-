@@ -15,6 +15,37 @@ async function loadTours() {
     
     return data
 }
+
+function filterByRating(tours, minR, maxR) {
+    const ratingFilter = document.getElementById('ratingFilter')
+    ratingFilter.addEventListener('change', () => {
+        const ratingFilterValue = ratingFilter.value
+    
+    if (ratingFilter) {
+        const filteredTours = tours.filter((tour) => {
+            return tour.ratingFilter >= parseFloat(minR) && tour.ratingFilter <= parseFloat(maxR)
+        })
+        renderTours(filteredTours)
+    } else {
+        renderTours(tours)
+    }
+    console.log(ratingFilter)
+})
+}
+
+function filterByPrice(tours, minP, maxP) {
+    
+    if (price) {
+        const filteredTours = tours.filter((tour) => {
+            return tour.price >= parseFloat(minP) && tour.price <= parseFloat(maxP)
+        })
+        renderTours(filteredTours)
+    } else {
+        renderTours(tours)
+    }
+    console.log(price)
+}
+
 function filterByCountry(tours, country) {
     const filteredTours = tours.filter((tour) => {
         return tour.country === country
@@ -26,13 +57,23 @@ async function init() {
     tours = await loadTours()
     renderTours(tours)
 
-    document.getElementById('thailand').addEventListener('click', () => filterByCountry (tours,'Тайланд'))
-    document.getElementById('maldives').addEventListener('click', () => filterByCountry (tours,'Мальдивы'))
-    document.getElementById('indonesia').addEventListener('click', () => filterByCountry (tours,'Индонезия'))
-    document.getElementById('mexico').addEventListener('click', () => filterByCountry (tours,'Мексика'))
-    document.getElementById('tanzania').addEventListener('click', () => filterByCountry (tours,'Танзания'))
-    document.getElementById('cyprus').addEventListener('click', () => filterByCountry (tours,'Кипр'))
-    document.getElementById('egypt').addEventListener('click', () => filterByCountry (tours,'Египет'))
+    const countryButtons = Array.from(document.getElementsByClassName('btn-country'))
+    countryButtons.forEach(countryButton => {
+        countryButton.addEventListener('click', () => {
+            const country = countryButton.dataset.country
+            if (country === 'all') {
+                filterByCountry(tours)
+            }  else {
+                filterByCountry(tours, country)
+            }
+        })
+    })
+
+    const ratingCheckboxes = Array.from(document.getElementsByClassName('rating'))
+    ratingCheckboxes.forEach(ratingCheckbox => {
+        ratingCheckbox.addEventListener('click', () => filterByRating(tours,ratingCheckbox.dataset.min))
+
+    })
     
 }
 
@@ -52,10 +93,13 @@ function renderTours(tours) {
                 <div class="p-5">
                     <div>
                         <a href="#">
+                            <p class="text-sm md:text-base bg-rose-300 text-slate-50 rounded-full font-extrabold absolute p-2">${tour.rating}</p>
+                            <div class="flex justify-start">
                             <p class="font-semibold mt-3 text-lg text-rose-600">${tour.country}</p>
-                            <p class='font-semibold mt-3 text-Sm text-rose-400'>${tour.city !== null ? tour.city : ""}</p>
+                            <p class='font-semibold mt-3 text-lg text-rose-400 px-3'>${tour.city !== null ? tour.city : ""}</p>
+                            </div>
                             <p class="text-grey-400 mt-3">${tour.hotelName}</p>
-                        </a>
+                        </a> 
                         <p class="text-teal-500 font-medium text-sm pt-2">
                             <a href="#">${format(new Date(tour.startTime),"dd MMMM yyyy", { locale: ru }
                                 )}-${format(new Date(tour.endTime),"dd MMMM yyyy",{ locale: ru }
@@ -135,11 +179,13 @@ function openContainerRegister (id) {
 const closeRegisterBtn = document.getElementById ('close-register-btn')
 closeRegisterBtn.addEventListener('click', closeContainerRegister)
 
-function closeContainerRegister () {
+function closeContainerRegister (event) {
+    event.preventDefault()
     containerRegister.style.display = 'none'
 }
 
-async function sendTour () {
+async function sendTour (event) {
+    event.preventDefault()
     const params = {
         customerName: document.getElementById("name").value,
         phone: document.getElementById("phone").value,
@@ -158,8 +204,7 @@ async function sendTour () {
                 body: JSON.stringify(params)
             })
             let jsonData = await response.json()
-            console.log ("Ваше обращение зарегистрировано")
-            closeContainerRegister()
+            
             alert("Ваше обращение зарегистрировано")
         } catch {
             console.log ("Повторите еще раз! Произошла ошибка")
@@ -170,19 +215,4 @@ async function sendTour () {
 }
 
 init ()
-    // if (response.ok) {
-    //     alert("Ваше обращение зарегистрировано")
-    //     closeContainerRegister()
-    //     let result = await response.json()
-    //     return result
-    // }else {
-    //     alert("Повторите еще раз! Произошла ошибка")
-    // }
-  
- 
-// function clearContainer () {
-//     document.getElementById('name').value = ""
-//     document.getElementById('phone').value = ""
-//     document.getElementById('email').value = ""
-//     document.getElementById('comment').value = ""
-// }
+    

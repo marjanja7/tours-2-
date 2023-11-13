@@ -8,14 +8,19 @@
 .btn-country {
     @apply border border-solid border-rose-500 px-4 py-2 rounded-md hover:bg-rose-500 hover:text-white transition-all duration-500;
 }
+
+  
 .container-register{
     background-color: rgba(105, 104, 104, 0.456);
     border-radius: 12px;
     display: none;
     
-    max-width: 700px;
+    
     position: fixed;
-    top: 30;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
     
     padding: 40px;
     
