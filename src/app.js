@@ -116,7 +116,7 @@ function renderTours(tours) {
 
                     <p class="py-2 text-2xl text-rose-600 font-bold">${tour.price} ₽ </p>
                     <div class="buttons flex">
-                        <button class="btn-primary w-full ">Подробнее</button>
+                       
                         <button id="register-btn-${tour.id}" class="btn-primary w-full">Забронировать</button>
                     </div>
                 </div>
@@ -139,6 +139,8 @@ function renderTours(tours) {
 
 const containerRegister = document.getElementById ('container-register')
 const openContainerBtn = document.getElementById (`register-btn-${tours.id}`)
+const errorMessage = document.getElementById ('error-message')
+const registeredMessage = document.getElementById ('registered-message')
 
 const sendBtn = document.getElementById('send-btn')
 
@@ -176,12 +178,39 @@ function openContainerRegister (id) {
 
 }
 
+function clearForm () {
+    document.getElementById('name').value = ""
+    document.getElementById('phone').value = ""
+    document.getElementById('email').value = ""
+    document.getElementById('comment').value = ""
+}
+
 const closeRegisterBtn = document.getElementById ('close-register-btn')
 closeRegisterBtn.addEventListener('click', closeContainerRegister)
 
 function closeContainerRegister (event) {
     event.preventDefault()
     containerRegister.style.display = 'none'
+}
+
+const clossErrorBtn = document.getElementById ('clossBtnError')
+clossErrorBtn.addEventListener('click', closeErrorMessage)
+
+function closeErrorMessage (event) {
+    event.preventDefault()
+    errorMessage.style.display = 'none'
+
+}
+
+const clossRegisteredBtn = document.getElementById ('clossBtnRegistered')
+clossRegisteredBtn.addEventListener('click', closeRegisteredMessage)
+
+function closeRegisteredMessage (event) {
+    event.preventDefault()
+    registeredMessage.style.display = 'none'
+    closeContainerRegister ()
+    clearForm ()
+
 }
 
 async function sendTour (event) {
@@ -205,7 +234,7 @@ async function sendTour (event) {
             })
             let jsonData = await response.json()
             
-            alert("Ваше обращение зарегистрировано")
+            document.getElementById('registered-message').style.display = 'flex'
         } catch {
             console.log ("Повторите еще раз! Произошла ошибка")
         }

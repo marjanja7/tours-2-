@@ -80,10 +80,7 @@
                         
                         <div class="user-contacts" id="user-contacts">
                             <div class="contacts-title">Контактные данные гостя</div>
-                           
-                            <div id="error-message" class="hidden border border-solid text-red-600 rounded text-center font-bold "> 
-                                ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ВСЕ ПОЛЯ! </div>
-                            
+                                    
                             <form class="contacts-form">
                                 <div class="input"> 
                                     <p class="p-input">Фамилия Имя</p>
@@ -103,7 +100,7 @@
                                 </div>
                                 <div id="form" class="w-full">
                                     <div class="buttons-form flex pt-6">
-                                        <button class="btn-primary w-full" id="send-btn">В избранное</button>
+                                        <button class="btn-primary w-full" id="send-btn">Отправить</button>
                                         <button class="btn-primary w-full" id="close-register-btn">Закрыть</button>
                                     </div>
                                 </div>
@@ -112,6 +109,24 @@
                     </div>
                     
                     
+                </div>
+                <div id="error-message" class="items-center justify-center me-8 fixed top-0 bottom-0 right-0 left-0 px-1 mr-o"> 
+                    <div class="rounded-md flex flex-col items-center bg-white p-12 gap-4">
+                        <div>
+                            <p class="text-rose-600 font-semibold">ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ВСЕ ПОЛЯ!</p>
+                        </div>
+                        <div> 
+                            <button id="clossBtnError" class="btn-primary ">Закрыть</button></div>
+                    </div>
+                </div>
+                <div id="registered-message" class="items-center justify-center me-8 fixed top-0 bottom-0 right-0 left-0 px-1 mr-o"> 
+                    <div class="rounded-md flex flex-col items-center bg-white p-12 gap-4">
+                        <div>
+                            <p class="text-rose-600 font-semibold">Ваше обращение зарегистрировано!</p>
+                        </div>
+                        <div> 
+                            <button id="clossBtnRegistered" class="btn-primary ">Закрыть</button></div>
+                    </div>
                 </div>
             </div>
             </div>
@@ -122,3 +137,5 @@
         </div>
     </body>
 </html>
+<!-- <div id="error-message" class="hidden border border-solid text-red-600 rounded text-center font-bold "> 
+    ПОЖАЛУЙСТА, ЗАПОЛНИТЕ ВСЕ ПОЛЯ! </div> -->
